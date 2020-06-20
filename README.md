@@ -27,16 +27,41 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|email|string|null: false|
+|name|string|null: false||add_index:true|
+|email|string|null: false|unique: true|
 |password|string|null: false|
-|family_name|string|null: false|
-|first_name|string|null: false|
+
 
 ### Association
-- has_many :chatspace
-- has_many :comments
+- has_many :groups_users
+- has_many :groups, through: groups_users
+- has_many :messages
 
-## groups_usersテーブル
+## messagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|body|text|
+|image|string|
+|user_id|integer|null: false, foreign_key: true|
+|gruop_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :group
+- belongs_to :user
+
+## groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|gruop_id|integer|null: false, foreign_key: true|
+
+### Association
+has_many :groups_users
+has_many :users, through: groups_users
+has_many :messages
+
+## groups_usersテーブル（中間テーブル）
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
@@ -46,12 +71,3 @@ Things you may want to cover:
 - belongs_to :group
 - belongs_to :user
 
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|gruop_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :groups_users
-- belongs_to :user
