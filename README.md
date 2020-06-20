@@ -52,9 +52,7 @@ Things you may want to cover:
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|gruop_id|integer|null: false, foreign_key: true|
+|group_name|string|null: false|unique: true|
 
 ### Association
 has_many :groups_users
