@@ -1,0 +1,44 @@
+.mainchat
+  .mainchat__groupinfo
+    .current__group
+      %h2.current__group__name
+        teamA
+        %ul.current__group__member__list
+          Member : 
+          %li
+            hiroshi
+      .edit__btn
+        =link_to "#" do
+          Edit
+
+  .mainchat__messagelist
+    .message
+      %h3.message__name
+        hiroshi
+        %p.message__date
+          2020/1/1(wed) 11:11:11
+      .message__text
+        アフターコロナ
+    .message
+      %h3.message__name
+        hiroshi
+        %p.message__date
+          2020/1/1(wed) 12:12:12
+      .message__text
+        今年もよろしくお願いします
+    .message
+      %h3.message__name
+        hiroshi
+        %p.message__date
+          2020/1/1(wed) 13:13:13
+      .message__text
+        ウィズコロナ
+
+  .mainchat__messageform
+    %form.new__message
+      .input__box
+        %input{type: "text", class: "input__box__text", placeholder: "type a message"}
+        %label{class: "input__box__image"}
+          = icon('far', 'image')
+          %input{type: "file", class: "input__box__image__file"}
+      %input{type: "submit", class: "submit__btn", value: "Send"} 
