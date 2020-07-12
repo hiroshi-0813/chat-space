@@ -1,26 +1,20 @@
-.sidebar
-  .sidebar__username
-    .sidebar__topitems
-      %p.sidebar__topitems__name
-        imo
-      %ul.sidebar__topitems__icons
-        %li
-          =link_to "#" do
-            = icon('fas', 'edit', class: "edit--icon")
-        %li
-          =link_to "#" do
-            = icon('fas', 'cog')
-
-  .sidebar__grouplist
-    %h1.sidebar__grouplist__name
-      teamA
-    %p.sidebar__grouplist__message
-      アフターコロナ
-    %h1.sidebar__grouplist__name
-      teamB
-    %p.sidebar__grouplist__message
-      まだメッセージがありません
-    %h1.sidebar__grouplist__name
-      teamC
-    %p.sidebar__grouplist__message
-      まだメッセージがありません
+.side-bar
+  .header
+    .header__box 
+      %h3.header__box__name
+        = current_user.name
+      %ul.header__box__lists
+        %li.list
+          = link_to new_group_path do
+            = icon('fas', 'edit', class: 'icon')
+        %li.list
+          = link_to edit_user_path(current_user) do
+            = icon('fas', 'cog', class: 'icon')
+  .groups
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          .group__name
+            = group.name
+          .group__message
+            = group.show_last_message
