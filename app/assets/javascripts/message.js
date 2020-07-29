@@ -93,7 +93,8 @@ $(function(){
       $('.form__submit').prop('disabled', false);
     })
     .fail(function(){
-        alert('メッセージ送信に失敗しました')
+        alert('メッセージを入力してください')
+        $('.form__submit').prop('disabled', false);
     })
   })
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
